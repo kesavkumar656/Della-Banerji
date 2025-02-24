@@ -6,17 +6,17 @@ $browser-prefixes: false !default;
 	--font_secondary: "Poppins", sans-serif;
 
 	// Primary colors
-	--color_primary_tint: #eedb95;
-	--color_primary_light: #e9cf72;
-	--color_primary: #e2c044;
+	--color_primary_tint: #9e4f39;
+	--color_primary_light: #f4a195;
+	--color_primary: #9e4f39;
 	--color_primary_shade: #deb72b;
 	--color_primary_dark: #c29f1e;
 	--color_primary_deep: #9f8219;
 	--color_primary_contrast: #000000;
 	// Secondary colors
-	--color_secondary_tint: #87a8ab;
+	--color_secondary_tint: #f4a195;
 	--color_secondary_light: #6f969b;
-	--color_secondary: #587b7f;
+	--color_secondary: #f4a195;
 	--color_secondary_shade: #4b696c;
 	--color_secondary_dark: #3b5254;
 	--color_secondary_deep: #2a3a3c;
@@ -24,6 +24,7 @@ $browser-prefixes: false !default;
 	// Secondary colors
 	--color_black: #000000;
 	--color_white: #ffffff;
+	--color_text: #1c1c1c;
 
 	// Extras
 	--container_width: 100%;

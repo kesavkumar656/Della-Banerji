@@ -37,9 +37,11 @@ function InnerBanner({
 			</div>
 			{/* Banner Content */}
 			<div className={`${styles.banner_content}`}>
-				<div className="container">
-					<h1>{bannerTitle}</h1>
-					<p>{bannerDescription}</p>
+				<div className="container text_center  ">
+					<h1 className="text_300 color_white text_2xl">{bannerTitle}</h1>
+					<p className="text_300 text_uppercase color_white text_2xs ">
+						{bannerDescription}
+					</p>
 				</div>
 			</div>
 		</div>
