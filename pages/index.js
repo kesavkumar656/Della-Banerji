@@ -19,10 +19,14 @@ import DesktopBanner from "@/../public/img/Home/DesktopBanner.jpg";
 import HomeAbout from "@/sections/HomeAbout";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
+import HomeReflection from "@/sections/HomeReflection";
+import { useState } from "react";
+import IntroScreen from "@/components/IntroScreen";
 // DATA //
 
 /** Home Page */
 export default function HomePage() {
+	const [showIntro, setShowIntro] = useState(true);
 	return (
 		<div>
 			{/* Metatags */}
@@ -33,6 +37,7 @@ export default function HomePage() {
 
 			{/* Page Content starts here */}
 			<main className={`${styles.HomePage} `}>
+				{showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
 				<InnerBanner
 					desktopImage={DesktopBanner.src}
 					bannerTitle={
@@ -44,6 +49,7 @@ export default function HomePage() {
 					bannerDescription={"Scroll Down"}
 				/>
 				<HomeAbout gsap={gsap} ScrollTrigger={ScrollTrigger} />
+				<HomeReflection gsap={gsap} ScrollTrigger={ScrollTrigger} />
 			</main>
 
 			{/* Page Content ends here */}

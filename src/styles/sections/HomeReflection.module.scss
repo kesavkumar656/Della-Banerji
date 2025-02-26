@@ -1,0 +1,54 @@
+@import "../helpers/helpers.scss";
+
+.HomeReflection {
+	background-color: var(--color_secondary);
+	min-height: 200vh; // ensures enough scroll distance
+	.wrapper {
+		position: relative;
+	}
+	.firstRow,
+	.SecondRow {
+		display: flex;
+		justify-content: space-between;
+	}
+	.centerDiv {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		width: 40%;
+		// bottom: 50%;
+		border: 1px solid black;
+		padding: 25px;
+		// background-color: var(--color_secondary);
+		// z-index: 4;
+		opacity: 0.5;
+	}
+	.floatingDiv {
+		// position: absolute;
+
+		background-color: var(--color_secondary);
+		display: flex;
+
+		div {
+			z-index: 3;
+			padding: 10px;
+			width: 35%;
+			border: 1px solid white;
+			background-color: var(--color_secondary);
+		}
+	}
+	.LeftTop {
+		div {
+			justify-content: flex-start;
+		}
+	}
+	.LeftBottom {
+		justify-content: flex-end;
+	}
+	.RightTop {
+		justify-content: flex-start;
+	}
+	.RightBottom {
+		justify-content: flex-end;
+	}
+}
