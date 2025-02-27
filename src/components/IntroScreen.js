@@ -26,7 +26,7 @@ export default function IntroScreen({ onFinish }) {
 
 	useEffect(() => {
 		setTimeout(() => setFadeOut(true), 6000);
-		setTimeout(onFinish, 1000000);
+		setTimeout(onFinish, 6000);
 	}, [onFinish]);
 
 	const logoRef = useRef(null);

@@ -2,9 +2,24 @@
 
 .HomeReflection {
 	background-color: var(--color_secondary);
-	min-height: 200vh; // ensures enough scroll distance
+
+	.spacer {
+		height: 100vh;
+		background-color: red;
+	}
+	.pin_section {
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #3498db;
+		color: white;
+		font-size: 2rem;
+	}
+
 	.wrapper {
 		position: relative;
+		min-height: 100vh;
 	}
 	.firstRow,
 	.SecondRow {
