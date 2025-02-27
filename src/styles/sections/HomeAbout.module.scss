@@ -1,0 +1,37 @@
+@import "../helpers/helpers.scss";
+
+.HomeAbout {
+	.Wrapper {
+		@extend %f_r_a_center;
+		justify-content: space-between;
+		gap: 100px;
+		// div {
+		// 	flex: 1 1;
+		// }
+		.contentDiv {
+			overflow: hidden;
+
+			// height: 70vh;
+			width: 60%;
+			.section_tag {
+				border: 1px solid var(--color_primary);
+				border-radius: 30px;
+				width: fit-content;
+				padding: 0 15px;
+			}
+		}
+		.ImageDiv {
+			width: 33%;
+			@extend %relative_box;
+
+			.lines {
+				position: absolute;
+				right: -10%;
+				top: -10%;
+				z-index: -1;
+			}
+			.potrait {
+			}
+		}
+	}
+}

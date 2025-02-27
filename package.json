@@ -12,9 +12,10 @@
 		"create-page": "node scripts/createPage.js"
 	},
 	"dependencies": {
+		"@studio-freight/lenis": "^1.0.22",
 		"commander": "^11.1.0",
 		"fs-extra": "^11.2.0",
-		"@studio-freight/lenis": "^1.0.22",
+		"gsap": "^3.12.7",
 		"html-react-parser": "^5.0.6",
 		"next": "12.3.0",
 		"path": "^0.12.7",

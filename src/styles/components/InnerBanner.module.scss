@@ -12,6 +12,8 @@
 	}
 	.banner_content {
 		@extend %full_overlay;
+		right: 50%;
+		bottom: 50%;
 		display: grid;
 		place-items: center center;
 	}
