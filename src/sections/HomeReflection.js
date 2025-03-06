@@ -37,32 +37,17 @@ export default function HomeReflection({ gsap, ScrollTrigger }) {
 
 		tl
 			.fromTo(
-				"#LeftT",
+				["#LeftT", "#RightB"],
 				{ opacity: 0, y: 100 },
-				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" },
-				{ x: 100, duration: 1.5, ease: "power2.out" }
+				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
 			)
+			.to(["#LeftT", "#RightB"], { y: -600, duration: 4.5, ease: "power2.out" })
 			.fromTo(
-				"#LeftB",
+				["#LeftB", "#RightT"],
 				{ opacity: 0, y: 100 },
-				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" },
-				"+=0.5",
-				{ x: 100, duration: 1.5, ease: "power2.out" }
-			) // Adds a slight delay
-			.fromTo(
-				"#RightT",
-				{ opacity: 0, y: 100 },
-				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" },
-				"+=0.5",
-				{ x: 100, duration: 1.5, ease: "power2.out" }
+				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
 			)
-			.fromTo(
-				"#RightB",
-				{ opacity: 0, y: 100 },
-				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" },
-				"+=0.5",
-				{ x: 100, duration: 1.5, ease: "power2.out" }
-			);
+			.to(["#LeftB", "#RightT"], { y: -600, duration: 1.5, ease: "power2.out" });
 
 		return () => {
 			tl.kill(); // Cleanup on unmount

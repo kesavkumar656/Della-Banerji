@@ -115,13 +115,19 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 							navigating career transitions.
 						</p>
 						<h2 className={`${styles.hiddenTxt} text_lg color_primary`}>
-							<span id="Path_1">Most people</span>
-							<span id="Path_2">do not take the time to think</span>
-							<span id="Path_3">strategically about themselves</span>
-							<span id="Path_4">
+							<span>Most</span> <span>people</span>
+							<span>do</span> <span>not</span> <span>take</span> <span>the</span>
+							<p id="Path_1"></p>
+							<p id="Path_2">
+								<span>time</span> <span>to</span> <span>think</span>
+							</p>
+							<p id="Path_3">
+								<span>strategically</span> <span>about</span> themselves
+							</p>
+							<p id="Path_4">
 								or their career. This type of reflection pays huge dividends
-							</span>
-							<span id="Path_5">psychologically, personally, and professionally.</span>
+							</p>
+							<p id="Path_5">psychologically, personally, and professionally.</p>
 						</h2>
 					</div>
 				</div>
