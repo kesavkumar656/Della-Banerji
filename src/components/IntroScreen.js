@@ -1,87 +1,75 @@
 // MODULES //
-
-// COMPONENTS //
-
-// SECTIONS //
-
-// PLUGINS //
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-// UTILS //
 
 // STYLES //
 import styles from "@/styles/components/IntroScreen.module.scss";
-
-// IMAGES //
-
-// DATA //
 
 /** IntroScreen Component */
 export default function IntroScreen({ onFinish }) {
 	const [visible, setVisible] = useState(false);
 	const [fadeOut, setFadeOut] = useState(false);
-	useEffect(() => {
-		setTimeout(() => setVisible(true), 6000);
-	}, []);
-
-	useEffect(() => {
-		setTimeout(() => setFadeOut(true), 6000);
-		setTimeout(onFinish, 6000);
-	}, [onFinish]);
-
 	const logoRef = useRef(null);
-	const ContainerRef = useRef(null);
+	const textRef = useRef(null);
+	const containerRef = useRef(null);
 
 	useEffect(() => {
-		if (!visible) {
-			gsap.to(logoRef.current, {
-				opacity: 0,
-				// Shrinks slightly while fading out
-				// Slight rotation effect
-				delay: 1,
-				duration: 3,
-				ease: "power2.out",
-				onComplete: () => {
-					if (logoRef.current) {
-						logoRef.current.style.display = "none"; // Hide after animation
-					}
-				},
-			});
-			gsap.to(ContainerRef.current, {
-				y: "-100%", // Moves up
-				opacity: 0,
-				delay: 5,
-				duration: 1.5,
-				ease: "power2.inOut",
-				onComplete: () => {
-					if (ContainerRef.current) {
-						ContainerRef.current.style.display = "none";
-					}
-				},
-			});
-			gsap.to("#text", {
-				y: "-100px",
-				opacity: 1,
-				delay: 0.5,
-				duration: 3,
-			});
-		}
-	}, [visible]);
+		const timeline = gsap.timeline();
+
+		// Step 1: Fade out the logo
+		timeline.to(logoRef.current, {
+			opacity: 0,
+			delay: 1, // Start after 1s
+			duration: 3,
+			ease: "power2.out",
+			onComplete: () => {
+				if (logoRef.current) logoRef.current.style.display = "none";
+				setVisible(true); // Set text visibility only after logo animation
+			},
+		});
+
+		// Step 2: Fade in the text after the logo disappears
+		timeline.fromTo(
+			textRef.current,
+			{ y: "100px", opacity: 0, visibility: "visible" },
+			{ y: "0px", opacity: 1, duration: 2, ease: "power2.out" },
+			"+=0.5" // Wait 0.5s after logo disappears before starting
+		);
+
+		// Step 3: Fade out the entire intro screen
+		timeline.to(containerRef.current, {
+			y: "-100%",
+			opacity: 0,
+			delay: 5, // Let the text stay for 3s before fading out
+			duration: 1.5,
+			ease: "power2.inOut",
+			onComplete: () => {
+				if (containerRef.current) containerRef.current.style.display = "none";
+				onFinish(); // Call onFinish after animation
+			},
+		});
+	}, [onFinish]);
 
 	return (
 		<div
-			ref={ContainerRef}
+			ref={containerRef}
 			className={`${styles.intro} ${fadeOut ? styles.fadeOut : ""} bg_primary`}
 		>
 			<div className={styles.wrapper}>
+				{/* Logo */}
 				<div className={styles.logo} ref={logoRef} id="hide" style={{ opacity: 1 }}>
-					<img src="/img/logo.png" loading="lazy" />
+					<img  src="/img/logo.png" loading="lazy" />
 				</div>
+
+				{/* Text - Initially hidden */}
 				<div
-					id="text"
-					className={`${styles.textDiv} ${visible ? styles.show : styles.hide}`}
+					ref={textRef}
+					className={`${styles.textDiv} ${
+						visible ? styles.show : styles.hide
+					} color_white`}
+					style={{ visibility: "hidden" }}
 				>
-					<p>Reimagening the path to success</p>
+					<p>Reimagining the path to success</p>
 				</div>
 			</div>
 		</div>

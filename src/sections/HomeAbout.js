@@ -25,6 +25,16 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 			if (isDesktop) {
 				gsap.registerPlugin(ScrollTrigger);
 
+				// Pin the entire section
+				ScrollTrigger.create({
+					trigger: triggerRef.current,
+					start: "top top",
+					end: "+=1000", // Adjust this value based on animation duration
+					pin: true,
+					scrub: 1,
+					markers: true, // Remove after testing
+				});
+
 				// Animate first set of spans
 				gsap.fromTo(
 					spansRef1.current,
@@ -39,7 +49,6 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 							start: "top 80%",
 							end: "top 50%",
 							toggleActions: "play none none none",
-							// markers: true,
 						},
 					}
 				);
@@ -58,7 +67,6 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 							start: "top 60%",
 							end: "top 30%",
 							toggleActions: "play none none none",
-							// markers: true,
 						},
 					}
 				);
@@ -71,25 +79,22 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 						opacity: 1,
 						y: 0,
 						stagger: 0.5,
-
 						ease: "power2.out",
 						scrollTrigger: {
 							trigger: triggerRef.current,
 							start: "top 40%",
 							end: "top 20%",
 							toggleActions: "play none none none",
-							// markers: true,
 						},
 					}
 				);
 
-				// Animate content3Ref separately
+				// Animate contentDiv separately
 				gsap.fromTo(
 					content3Ref.current,
 					{ y: 0, opacity: 1 },
 					{
 						y: -100,
-						pin: true,
 						opacity: 1,
 						duration: 1,
 						ease: "power2.out",
@@ -98,9 +103,6 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 							start: "top center",
 							end: "bottom bottom",
 							scrub: true,
-							pin: true, // Pins only the wrapper
-							// pinSpacer: false,
-							markers: true,
 						},
 					}
 				);
