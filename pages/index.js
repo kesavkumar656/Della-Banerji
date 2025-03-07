@@ -37,7 +37,7 @@ export default function HomePage() {
 
 			{/* Page Content starts here */}
 			<main className={`${styles.HomePage} `}>
-				{/* {showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />} */}
+				{showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
 				<InnerBanner
 					desktopImage={DesktopBanner.src}
 					bannerTitle={
