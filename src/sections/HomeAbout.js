@@ -30,7 +30,7 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 					trigger: triggerRef.current,
 					start: "top top",
 					end: "+=1000", // Adjust this value based on animation duration
-					pin: true,
+					// pin: true,
 					scrub: 1,
 					markers: true, // Remove after testing
 				});
@@ -143,14 +143,6 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 							navigating career transitions. Career success entails more than just
 							ascending the corporate hierarchy - it includes finding joy and genuine
 							satisfaction in what you do.
-							<br />
-							For more than 20 years, Della Banerji has collaborated with executives
-							and organizations, focusing on career advancement and professional
-							growth. She specializes in guiding individuals to refine their career
-							paths, aligning them with their personal values. Leveraging executive
-							coaching training from INSEAD and an MA from Cambridge University, Della
-							catalyses transformative change, offering coaching to executives
-							navigating career transitions.
 						</p>
 						<p>Most people do not take the time to think strategically .</p>
 						<h2 className={`${styles.hiddenTxt} text_lg color_primary`}>
