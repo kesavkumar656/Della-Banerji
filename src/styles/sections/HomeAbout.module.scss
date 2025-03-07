@@ -2,15 +2,15 @@
 
 .HomeAbout {
 	overflow: hidden;
-
+	background-color: white;
 	.Wrapper {
+		height: 100vh;
 		@extend %f_r_a_center;
 		justify-content: space-between;
-		gap: 100px;
+		// gap: 100px;
 
 		.contentDiv {
 			overflow: hidden;
-
 			width: 60%;
 			.section_tag {
 				border: 1px solid var(--color_primary);

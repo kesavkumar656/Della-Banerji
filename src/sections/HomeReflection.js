@@ -30,7 +30,7 @@ export default function HomeReflection({ gsap, ScrollTrigger }) {
 				end: "+=3000",
 				scrub: true,
 				pin: true,
-				pinSpacer: false,
+				// pinSpacer: false,
 			},
 		});
 

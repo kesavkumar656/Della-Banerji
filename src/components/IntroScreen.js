@@ -19,12 +19,11 @@ export default function IntroScreen({ onFinish }) {
 		// Step 1: Fade out the logo
 		timeline.to(logoRef.current, {
 			opacity: 0,
-			delay: 1, // Start after 1s
-			duration: 3,
+			duration: 1,
 			ease: "power2.out",
 			onComplete: () => {
 				if (logoRef.current) logoRef.current.style.display = "none";
-				setVisible(true); // Set text visibility only after logo animation
+				setVisible(true);
 			},
 		});
 
@@ -32,7 +31,7 @@ export default function IntroScreen({ onFinish }) {
 		timeline.fromTo(
 			textRef.current,
 			{ y: "100px", opacity: 0, visibility: "visible" },
-			{ y: "0px", opacity: 1, duration: 2, ease: "power2.out" },
+			{ y: "0px", opacity: 1, duration: 1.5, ease: "power2.out" },
 			"+=0.5" // Wait 0.5s after logo disappears before starting
 		);
 
@@ -40,7 +39,7 @@ export default function IntroScreen({ onFinish }) {
 		timeline.to(containerRef.current, {
 			y: "-100%",
 			opacity: 0,
-			delay: 5, // Let the text stay for 3s before fading out
+			delay: 1, // Let the text stay for 3s before fading out
 			duration: 1.5,
 			ease: "power2.inOut",
 			onComplete: () => {
@@ -58,7 +57,7 @@ export default function IntroScreen({ onFinish }) {
 			<div className={styles.wrapper}>
 				{/* Logo */}
 				<div className={styles.logo} ref={logoRef} id="hide" style={{ opacity: 1 }}>
-					<img  src="/img/logo.png" loading="lazy" />
+					<img src="/img/logo.png" loading="lazy" />
 				</div>
 
 				{/* Text - Initially hidden */}

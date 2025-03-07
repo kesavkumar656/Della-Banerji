@@ -39,6 +39,8 @@ export default function HomePage() {
 			<main className={`${styles.HomePage} `}>
 				{showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
 				<InnerBanner
+					gsap={gsap}
+					ScrollTrigger={ScrollTrigger}
 					desktopImage={DesktopBanner.src}
 					bannerTitle={
 						<>
