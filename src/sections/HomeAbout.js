@@ -12,72 +12,98 @@ import Lines from "@/../public/img/Home/CircleLines.png";
 
 /** HomeAbout Section */
 export default function HomeAbout({ gsap, ScrollTrigger }) {
-	const content1Ref = useRef(null);
-	const content2Ref = useRef(null);
 	const content3Ref = useRef(null);
 	const triggerRef = useRef(null);
+	const spansRef1 = useRef([]);
+	const spansRef2 = useRef([]);
+	const spansRef3 = useRef([]);
 
 	useEffect(() => {
 		if (typeof window !== "undefined" && gsap && ScrollTrigger) {
 			const isDesktop = window.innerWidth > 1199;
-			const mainTl = gsap.timeline();
 
 			if (isDesktop) {
 				gsap.registerPlugin(ScrollTrigger);
 
-				// Define animation timeline
-				mainTl
-					.from(
-						"#Path_1, #Path_2, #Path_3, #Path_4, #Path_5, #Path_6",
-						{
-							opacity: 0,
+				// Animate first set of spans
+				gsap.fromTo(
+					spansRef1.current,
+					{ opacity: 0, y: 20 },
+					{
+						opacity: 1,
+						y: 0,
+						stagger: 0.5,
+						ease: "power2.out",
+						scrollTrigger: {
+							trigger: triggerRef.current,
+							start: "top 80%",
+							end: "top 50%",
+							toggleActions: "play none none none",
+							// markers: true,
 						},
-						"first"
-					)
-					.to(triggerRef.current, { y: 0 }, { y: -500 })
-					.to("#Path_1", { opacity: 1 }, "second")
-					.to("#Path_2", { opacity: 1 }, "third")
-					.to("#Path_3", { opacity: 1 }, "forth")
-					.to("#Path_4", { opacity: 1 }, "fifth")
-					.to("#Path_5", { opacity: 1 }, "sixth")
-					// .to("#Path_3, #Path_4", { opacity: 0.15 }, "second")
-					// .fromTo(
+					}
+				);
 
-					// 	{ x: 100, opacity: 0 },
-					// 	{ x: 0, opacity: 1 },
-					// 	"second"
-					// )
-					.to("#Path_5", { opacity: 1 }, "third")
-					// .to("#Path_5, #Path_4", { opacity: 0.15 }, "third")
-					.fromTo(
-						content3Ref.current,
-						{ x: 100, opacity: 0 },
-						{ x: 0, opacity: 1 },
-						"third"
-					);
-				gsap.to(triggerRef.current, {
-					y: -100, // Adjust this value for more/less movement
-					opacity: 1,
-					scrollTrigger: {
-						trigger: triggerRef.current,
-						start: "top 80%", // When to start the animation
-						end: "top 30%", // When to stop the animation
-						scrub: true, // Smooth scrolling effect
-						marker: true,
-					},
-				});
-				// Initialize ScrollTrigger
-				ScrollTrigger.create({
-					animation: mainTl,
-					trigger: triggerRef.current,
-					start: "10px",
-					toggleActions: "play none none none",
-					end: "+=50px",
-					duration: 2,
-					// scrub: true,
-					// pin: true,
-					marker: true,
-				});
+				// Animate second set of spans
+				gsap.fromTo(
+					spansRef2.current,
+					{ opacity: 0, y: 20 },
+					{
+						opacity: 1,
+						y: 0,
+						stagger: 0.5,
+						ease: "power2.out",
+						scrollTrigger: {
+							trigger: triggerRef.current,
+							start: "top 60%",
+							end: "top 30%",
+							toggleActions: "play none none none",
+							// markers: true,
+						},
+					}
+				);
+
+				// Animate third set of spans
+				gsap.fromTo(
+					spansRef3.current,
+					{ opacity: 0, y: 20 },
+					{
+						opacity: 1,
+						y: 0,
+						stagger: 0.5,
+
+						ease: "power2.out",
+						scrollTrigger: {
+							trigger: triggerRef.current,
+							start: "top 40%",
+							end: "top 20%",
+							toggleActions: "play none none none",
+							// markers: true,
+						},
+					}
+				);
+
+				// Animate content3Ref separately
+				gsap.fromTo(
+					content3Ref.current,
+					{ y: 0, opacity: 1 },
+					{
+						y: -100,
+						pin: true,
+						opacity: 1,
+						duration: 1,
+						ease: "power2.out",
+						scrollTrigger: {
+							trigger: triggerRef.current,
+							start: "top center",
+							end: "bottom bottom",
+							scrub: true,
+							pin: true, // Pins only the wrapper
+							// pinSpacer: false,
+							markers: true,
+						},
+					}
+				);
 			}
 		}
 	}, [gsap, ScrollTrigger]);
@@ -85,17 +111,17 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 	return (
 		<section className={`${styles.HomeAbout} section_spacing`}>
 			<div className="container">
-				<div className={styles.Wrapper} id="wrapper">
+				<div className={styles.Wrapper} ref={triggerRef} id="wrapper">
 					<div className={styles.ImageDiv}>
-						<Image src={img1} alt="Home About" loading="lazy" />
-						<Image
+						<img src={img1.src} alt="Home About" loading="lazy" />
+						<img
 							className={styles.lines}
-							src={Lines}
+							src={Lines.src}
 							alt="Circle Lines"
 							loading="lazy"
 						/>
 					</div>
-					<div className={styles.contentDiv} ref={triggerRef}>
+					<div ref={content3Ref} className={styles.contentDiv}>
 						<p className={`${styles.section_tag} color_primary text_300`}>
 							About Della Banerji
 						</p>
@@ -112,22 +138,54 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 							paths, aligning them with their personal values. Leveraging executive
 							coaching training from INSEAD and an MA from Cambridge University, Della
 							catalyses transformative change, offering coaching to executives
+							navigating career transitions. Career success entails more than just
+							ascending the corporate hierarchy - it includes finding joy and genuine
+							satisfaction in what you do.
+							<br />
+							For more than 20 years, Della Banerji has collaborated with executives
+							and organizations, focusing on career advancement and professional
+							growth. She specializes in guiding individuals to refine their career
+							paths, aligning them with their personal values. Leveraging executive
+							coaching training from INSEAD and an MA from Cambridge University, Della
+							catalyses transformative change, offering coaching to executives
 							navigating career transitions.
 						</p>
+						<p>Most people do not take the time to think strategically .</p>
 						<h2 className={`${styles.hiddenTxt} text_lg color_primary`}>
-							<span>Most</span> <span>people</span>
-							<span>do</span> <span>not</span> <span>take</span> <span>the</span>
-							<p id="Path_1"></p>
-							<p id="Path_2">
-								<span>time</span> <span>to</span> <span>think</span>
-							</p>
-							<p id="Path_3">
-								<span>strategically</span> <span>about</span> themselves
-							</p>
-							<p id="Path_4">
-								or their career. This type of reflection pays huge dividends
-							</p>
-							<p id="Path_5">psychologically, personally, and professionally.</p>
+							{[
+								"Most",
+								"people",
+								"do",
+								"not",
+								"take",
+								"the",
+								"time",
+								"to",
+								"time",
+							].map((word, index) => (
+								<span key={index} ref={(el) => (spansRef1.current[index] = el)}>
+									{word}{" "}
+								</span>
+							))}{" "}
+						</h2>
+						<h2 className={`${styles.hiddenTxt} text_lg color_primary`}>
+							{" "}
+							{["think", "strategically", "about", "themselves", "or", "their"].map(
+								(word, index) => (
+									<span key={index} ref={(el) => (spansRef2.current[index] = el)}>
+										{word}{" "}
+									</span>
+								)
+							)}
+						</h2>
+						<h2 className={`${styles.hiddenTxt} text_lg color_primary`}>
+							{["think", "strategically", "about", "themselves", "or", "their"].map(
+								(word, index) => (
+									<span key={index} ref={(el) => (spansRef3.current[index] = el)}>
+										{word}
+									</span>
+								)
+							)}
 						</h2>
 					</div>
 				</div>
