@@ -16,5 +16,11 @@
 		bottom: 50%;
 		display: grid;
 		place-items: center center;
+		// overflow: hidden;
+		// height: 50px;
+		h1,
+		p {
+			line-height: 1;
+		}
 	}
 }

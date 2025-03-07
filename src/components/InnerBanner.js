@@ -1,5 +1,5 @@
 // MODULES //
-
+import gsap from "gsap";
 // COMPONENTS //
 
 // STYLES //
@@ -10,6 +10,7 @@ import styles from "@/styles/components/InnerBanner.module.scss";
 // IMAGES //
 import DefaultBanner from "@/../public/img/banner/defaultDesktopBanner.jpg";
 import DefaultBannerMob from "@/../public/img/banner/defaultMobileBanner.jpg";
+import { useEffect, useRef } from "react";
 
 // UTILS //
 
@@ -19,9 +20,58 @@ function InnerBanner({
 	bannerTitle,
 	bannerDescription,
 	mobileImage,
+	gsap,
+	ScrollTrigger,
 }) {
+	const ImgRef = useRef(null);
+	const triggerRef = useRef(null);
+	const bannerText = useRef([]);
+
+	useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: triggerRef.current,
+				start: "top top",
+				end: "bottom bottom",
+				scrub: true,
+				pin: true,
+				markers: true,
+			},
+		});
+
+		// Animate first set of spans
+		tl;
+
+		gsap.to(ImgRef.current, {
+			scale: 1.2,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: triggerRef.current,
+				start: "top top",
+				// end: "+=1000",
+				scrub: true,
+			},
+		});
+		gsap.fromTo(
+			bannerText.current,
+			{ y: 100, duration: 2 },
+			{ y: 0, duration: 2 },
+			{
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: triggerRef.current,
+					start: "top top",
+				},
+			}
+		);
+
+		return () => {
+			tl.kill(); // Cleanup on unmount
+		};
+	}, []);
 	return (
-		<div className={`${styles.inner_banner_wrap} `}>
+		<div ref={triggerRef} className={`${styles.inner_banner_wrap} `}>
 			{/* Banner Image */}
 			<div className={`${styles.banner_image} next_image`}>
 				<picture>
@@ -30,18 +80,21 @@ function InnerBanner({
 						media="(min-width:767px)"
 					/>
 					<img
+						ref={ImgRef}
 						src={mobileImage ? mobileImage : DefaultBannerMob.src}
 						alt="mobileImage"
 					/>
 				</picture>
 			</div>
 			{/* Banner Content */}
-			<div className={`${styles.banner_content}`}>
+			<div ref={bannerText} className={`${styles.banner_content}`}>
 				<div className="container text_center  ">
-					<h1 className="text_300 color_white text_2xl">{bannerTitle}</h1>
-					<p className="text_300 text_uppercase color_white text_2xs ">
-						{bannerDescription}
-					</p>
+					<div>
+						<h1 className="text_300 color_white text_2xl">{bannerTitle}</h1>
+						<p className="text_300 text_uppercase color_white text_2xs ">
+							{bannerDescription}
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
