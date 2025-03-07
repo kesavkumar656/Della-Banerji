@@ -23,14 +23,13 @@ export default function HomeReflection({ gsap, ScrollTrigger }) {
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
-		// Timeline for sequential animations
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: triggerRef.current,
 				start: "top top",
 				end: "+=3000",
 				scrub: true,
-				pin: true, // Pins only the wrapper
+				pin: true,
 				pinSpacer: false,
 			},
 		});
