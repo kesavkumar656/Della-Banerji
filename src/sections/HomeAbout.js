@@ -19,101 +19,58 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 	const spansRef3 = useRef([]);
 
 	useEffect(() => {
-		if (typeof window !== "undefined" && gsap && ScrollTrigger) {
-			const isDesktop = window.innerWidth > 1199;
+		gsap.registerPlugin(ScrollTrigger);
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: triggerRef.current,
+				start: "top top",
+				end: "+=1000",
+				scrub: true,
+				pin: true,
+				pinSpacer: false,
+				markers: true,
+			},
+		});
 
-			if (isDesktop) {
-				gsap.registerPlugin(ScrollTrigger);
+		// Animate first set of spans
+		tl
+			.fromTo(
+				spansRef1.current,
+				{ opacity: 0, y: 20 },
+				{ opacity: 1, y: 0, stagger: 0.5, ease: "power2.out" }
+			)
+			.fromTo(
+				spansRef2.current,
+				{ opacity: 0, y: 20 },
+				{ opacity: 1, y: 0, stagger: 0.5, ease: "power2.out" },
+				"-=0.5" // Overlapping effect (adjust as needed)
+			)
 
-				// Pin the entire section
-				ScrollTrigger.create({
-					trigger: triggerRef.current,
-					start: "top top",
-					end: "+=1000", // Adjust this value based on animation duration
-					// pin: true,
-					scrub: 1,
-					markers: true, // Remove after testing
-				});
-
-				// Animate first set of spans
-				gsap.fromTo(
-					spansRef1.current,
-					{ opacity: 0, y: 20 },
-					{
-						opacity: 1,
-						y: 0,
-						stagger: 0.5,
-						ease: "power2.out",
-						scrollTrigger: {
-							trigger: triggerRef.current,
-							start: "top 80%",
-							end: "top 50%",
-							toggleActions: "play none none none",
-						},
-					}
-				);
-
-				// Animate second set of spans
-				gsap.fromTo(
-					spansRef2.current,
-					{ opacity: 0, y: 20 },
-					{
-						opacity: 1,
-						y: 0,
-						stagger: 0.5,
-						ease: "power2.out",
-						scrollTrigger: {
-							trigger: triggerRef.current,
-							start: "top 60%",
-							end: "top 30%",
-							toggleActions: "play none none none",
-						},
-					}
-				);
-
-				// Animate third set of spans
-				gsap.fromTo(
-					spansRef3.current,
-					{ opacity: 0, y: 20 },
-					{
-						opacity: 1,
-						y: 0,
-						stagger: 0.5,
-						ease: "power2.out",
-						scrollTrigger: {
-							trigger: triggerRef.current,
-							start: "top 40%",
-							end: "top 20%",
-							toggleActions: "play none none none",
-						},
-					}
-				);
-
-				// Animate contentDiv separately
-				gsap.fromTo(
-					content3Ref.current,
-					{ y: 0, opacity: 1 },
-					{
-						y: -100,
-						opacity: 1,
-						duration: 1,
-						ease: "power2.out",
-						scrollTrigger: {
-							trigger: triggerRef.current,
-							start: "top center",
-							end: "bottom bottom",
-							scrub: true,
-						},
-					}
-				);
-			}
-		}
-	}, [gsap, ScrollTrigger]);
+			.fromTo(
+				spansRef3.current,
+				{ opacity: 0, y: 20 },
+				{ opacity: 1, y: 0, stagger: 0.5, ease: "power2.out" },
+				"-=0.5"
+			);
+		gsap.to(content3Ref.current, {
+			y: -200,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: triggerRef.current,
+				start: "top top",
+				end: "+=1000",
+				scrub: true,
+			},
+		});
+		return () => {
+			tl.kill(); // Cleanup on unmount
+		};
+	}, []);
 
 	return (
-		<section className={`${styles.HomeAbout} section_spacing`}>
+		<section ref={triggerRef} className={`${styles.HomeAbout} section_spacing`}>
 			<div className="container">
-				<div className={styles.Wrapper} ref={triggerRef} id="wrapper">
+				<div className={styles.Wrapper} id="wrapper">
 					<div className={styles.ImageDiv}>
 						<img src={img1.src} alt="Home About" loading="lazy" />
 						<img
