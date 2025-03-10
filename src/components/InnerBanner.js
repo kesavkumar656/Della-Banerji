@@ -28,51 +28,117 @@ function InnerBanner({
 	const TextAnimationref = useRef(null);
 	const bannerText = useRef([]);
 
+	// useEffect(() => {
+	// 	gsap.registerPlugin(ScrollTrigger);
+	// 	const tl = gsap.timeline({
+	// 		scrollTrigger: {
+	// 			trigger: triggerRef.current,
+	// 			start: "top top",
+	// 			end: "bottom bottom",
+	// 			scrub: true,
+	// 			pin: true, // Keep this for pinning
+	// 			yoyo: true,
+	// 			markers: true,
+
+	// 			pinSpacer: true, // Ensure this is enabled (or just remove this line)
+	// 		},
+	// 	});
+
+	// 	// Animate first set of spans
+	// 	tl;
+
+	// 	gsap.to(ImgRef.current, {
+	// 		scale: 1.2,
+	// 		ease: "power2.out",
+	// 		scrollTrigger: {
+	// 			trigger: triggerRef.current,
+	// 			start: "top top",
+	// 			end: "bottom bottom",
+	// 			scrub: true,
+	// 		},
+	// 	});
+	// 	gsap.fromTo(
+	// 		bannerText.current,
+	// 		{ y: 100, duration: 2 },
+	// 		{ y: 0, duration: 2 },
+	// 		{
+	// 			scrollTrigger: {
+	// 				delay: 5,
+	// 				// scrub: true,
+	// 				trigger: triggerRef.current,
+	// 				start: "top center",
+	// 			},
+	// 		}
+	// 	);
+	// 	gsap.to(TextAnimationref.current, {
+	// 		y: 50,
+	// 		duration: 2,
+	// 		repeat: -1,
+	// 		yoyo: true,
+	// 		ease: "power1.inOut",
+	// 		scrollTrigger: {
+	// 			trigger: triggerRef.current,
+	// 			start: "top top",
+	// 		},
+	// 	});
+
+	// 	return () => {
+	// 		tl.kill(); // Cleanup on unmount
+	// 	};
+	// }, []);
+
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
+
+		// Timeline for better control
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: triggerRef.current,
 				start: "top top",
 				end: "bottom bottom",
-				scrub: true,
+				scrub: 2, // Slower scrub for smoother scroll-based animation
 				pin: true,
 				markers: true,
-				delay: 5,
+				pinSpacer: true,
 			},
 		});
 
-		// Animate first set of spans
-		tl;
-
+		// Image Zoom Animation
 		gsap.to(ImgRef.current, {
 			scale: 1.2,
-			ease: "power2.out",
+			ease: "expo.out", // Smooth easing for natural movement
 			scrollTrigger: {
 				trigger: triggerRef.current,
 				start: "top top",
-				// end: "+=1000",
-				scrub: true,
+				end: "bottom bottom",
+				scrub: 2, // Smooth scrub speed
 			},
 		});
+
+		// Text Fade-in Animation
 		gsap.fromTo(
 			bannerText.current,
-			{ y: 100, duration: 2 },
-			{ y: 0, duration: 2 },
+			{ y: 100, opacity: 0 },
 			{
+				y: 0,
+				delay: 4,
+				opacity: 1,
+				duration: 1.5,
+				ease: "power3.out", // Strong ease-out for natural motion
 				scrollTrigger: {
-					// scrub: true,
 					trigger: triggerRef.current,
 					start: "top center",
 				},
 			}
 		);
+
+		// Text Bounce Effect
 		gsap.to(TextAnimationref.current, {
-			y: 50,
-			duration: 2,
+			y: 30, // Reduced movement for subtle bounce
+			duration: 1.5,
 			repeat: -1,
 			yoyo: true,
-			ease: "power1.inOut",
+			ease: "power1.inOut", // Smooth looping effect
 			scrollTrigger: {
 				trigger: triggerRef.current,
 				start: "top top",
@@ -83,6 +149,7 @@ function InnerBanner({
 			tl.kill(); // Cleanup on unmount
 		};
 	}, []);
+
 	return (
 		<div ref={triggerRef} className={`${styles.inner_banner_wrap} `}>
 			{/* Banner Image */}

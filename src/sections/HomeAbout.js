@@ -43,14 +43,14 @@ export default function HomeAbout({ gsap, ScrollTrigger }) {
 				spansRef2.current,
 				{ opacity: 0, y: 20 },
 				{ opacity: 1, y: 0, stagger: 0.5, ease: "power2.out" },
-				"-=0.5" // Overlapping effect (adjust as needed)
+				"1" // Overlapping effect (adjust as needed)
 			)
 
 			.fromTo(
 				spansRef3.current,
 				{ opacity: 0, y: 20 },
 				{ opacity: 1, y: 0, stagger: 0.5, ease: "power2.out" },
-				"-=0.5"
+				"1"
 			);
 		gsap.to(content3Ref.current, {
 			y: -200,
