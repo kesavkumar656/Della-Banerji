@@ -25,6 +25,7 @@ function InnerBanner({
 }) {
 	const ImgRef = useRef(null);
 	const triggerRef = useRef(null);
+	const TextAnimationref = useRef(null);
 	const bannerText = useRef([]);
 
 	useEffect(() => {
@@ -37,6 +38,7 @@ function InnerBanner({
 				scrub: true,
 				pin: true,
 				markers: true,
+				delay: 5,
 			},
 		});
 
@@ -58,13 +60,24 @@ function InnerBanner({
 			{ y: 100, duration: 2 },
 			{ y: 0, duration: 2 },
 			{
-				ease: "power2.out",
 				scrollTrigger: {
+					// scrub: true,
 					trigger: triggerRef.current,
-					start: "top top",
+					start: "top center",
 				},
 			}
 		);
+		gsap.to(TextAnimationref.current, {
+			y: 50,
+			duration: 2,
+			repeat: -1,
+			yoyo: true,
+			ease: "power1.inOut",
+			scrollTrigger: {
+				trigger: triggerRef.current,
+				start: "top top",
+			},
+		});
 
 		return () => {
 			tl.kill(); // Cleanup on unmount
@@ -91,7 +104,10 @@ function InnerBanner({
 				<div className="container text_center  ">
 					<div>
 						<h1 className="text_300 color_white text_2xl">{bannerTitle}</h1>
-						<p className="text_300 text_uppercase color_white text_2xs ">
+						<p
+							ref={TextAnimationref}
+							className="text_300 text_uppercase color_white text_2xs "
+						>
 							{bannerDescription}
 						</p>
 					</div>
