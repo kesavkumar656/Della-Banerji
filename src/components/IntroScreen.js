@@ -16,27 +16,30 @@ export default function IntroScreen({ onFinish }) {
 	useEffect(() => {
 		const timeline = gsap.timeline();
 
+		// Logo Animation - Faster fade out
 		timeline.to(logoRef.current, {
+			delay: 1,
 			opacity: 0,
-			duration: 5,
-
+			duration: 1, // Reduced to 1 second for faster transition
 			onComplete: () => {
 				if (logoRef.current) logoRef.current.style.display = "none";
 				setVisible(true);
 			},
 		});
 
+		// Text Animation - Appears quicker
 		timeline.fromTo(
 			textRef.current,
 			{ y: "100px", opacity: 0, visibility: "visible" },
-			{ y: "0px", opacity: 1, duration: 1.5 }
+			{ y: "0px", opacity: 1, duration: 0.8 } // Faster text reveal
 		);
 
+		// Container Exit Animation - Faster movement
 		timeline.to(containerRef.current, {
 			y: "-100%",
 			opacity: 0,
-			delay: 1,
-			duration: 1.5,
+			delay: 0.5, // Slight delay for timing balance
+			duration: 1.2, // Faster exit animation
 			ease: "power2.inOut",
 			onComplete: () => {
 				if (containerRef.current) containerRef.current.style.display = "none";

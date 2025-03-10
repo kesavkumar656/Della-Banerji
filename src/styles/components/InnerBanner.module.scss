@@ -3,9 +3,10 @@
 .inner_banner_wrap {
 	@extend %relative_box;
 	overflow: hidden;
+	padding: 0;
 	.banner_image {
 		img {
-			height: 100% !important;
+			height: auto !important; // Ensures image scales naturally
 			width: 100% !important;
 			object-fit: cover;
 		}

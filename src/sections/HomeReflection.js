@@ -35,11 +35,8 @@ export default function HomeReflection({ gsap, ScrollTrigger }) {
 		});
 
 		tl
-			.fromTo(
-				["#LeftT", "#RightB"],
-				{ opacity: 0, y: 100 },
-				{ opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
-			)
+
+			.fromTo(["#CenterDiv"], { opacity: 1 }, { opacity: 0.2, ease: "power2.out" })
 			.to(["#LeftT", "#RightB"], { y: -600, duration: 4.5, ease: "power2.out" })
 			.fromTo(
 				["#LeftB", "#RightT"],
