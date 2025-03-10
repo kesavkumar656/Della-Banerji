@@ -142,8 +142,9 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 						<div className={styles.RelativeDiv}>
 							<h1>Stories of real success</h1>
 							<p>
-								Explore the stories of those who've navigated similar journeys before
-								you, offering insights and inspiration for your own path.
+								{
+									"Explore the stories of those who've navigated similar journeys before you, offering insights and inspiration for your own path."
+								}
 							</p>
 						</div>
 					</div>
