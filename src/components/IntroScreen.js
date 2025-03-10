@@ -16,35 +16,31 @@ export default function IntroScreen({ onFinish }) {
 	useEffect(() => {
 		const timeline = gsap.timeline();
 
-		// Step 1: Fade out the logo
 		timeline.to(logoRef.current, {
 			opacity: 0,
-			duration: 1,
-			ease: "power2.out",
+			duration: 5,
+
 			onComplete: () => {
 				if (logoRef.current) logoRef.current.style.display = "none";
 				setVisible(true);
 			},
 		});
 
-		// Step 2: Fade in the text after the logo disappears
 		timeline.fromTo(
 			textRef.current,
 			{ y: "100px", opacity: 0, visibility: "visible" },
-			{ y: "0px", opacity: 1, duration: 1.5, ease: "power2.out" },
-			"+=0.5" // Wait 0.5s after logo disappears before starting
+			{ y: "0px", opacity: 1, duration: 1.5 }
 		);
 
-		// Step 3: Fade out the entire intro screen
 		timeline.to(containerRef.current, {
 			y: "-100%",
 			opacity: 0,
-			delay: 1, // Let the text stay for 3s before fading out
+			delay: 1,
 			duration: 1.5,
 			ease: "power2.inOut",
 			onComplete: () => {
 				if (containerRef.current) containerRef.current.style.display = "none";
-				onFinish(); // Call onFinish after animation
+				onFinish();
 			},
 		});
 	}, [onFinish]);

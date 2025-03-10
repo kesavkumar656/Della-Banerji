@@ -1,7 +1,7 @@
 @import "../helpers/helpers.scss";
 
 .HomeReflection {
-	background-color: var(--color_secondary);
+	background-color: var(--color_primary);
 
 	.wrapper {
 		position: relative;
@@ -18,8 +18,9 @@
 		transform: translate(-50%, 50%);
 		width: 40%;
 		// bottom: 50%;
-		border: 1px solid black;
+		border: 1px solid rgb(255, 255, 255);
 		padding: 25px;
+		color: white;
 		// background-color: var(--color_secondary);
 		// z-index: 4;
 		opacity: 1;
@@ -27,7 +28,8 @@
 	.floatingDiv {
 		// position: absolute;
 
-		background-color: var(--color_secondary);
+		background-color: var(--color_primary);
+
 		display: flex;
 
 		div {
@@ -35,7 +37,7 @@
 			padding: 10px;
 			width: 35%;
 			border: 1px solid white;
-			background-color: var(--color_secondary);
+			background-color: var(--color_primary);
 		}
 	}
 	.LeftTop {
