@@ -1,0 +1,28 @@
+@import "../helpers/helpers.scss";
+
+.HomeKeyExpertise {
+	background-color: white;
+	height: 100vh;
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		.ImgDiv {
+			width: 40%;
+		}
+		.ContentWrapper {
+			width: 50%;
+			.ContentDiv {
+				padding: 20px 0;
+				p {
+					padding: 10px 0;
+				}
+			}
+		}
+	}
+	.section_tag {
+		border: 1px solid var(--color_primary);
+		border-radius: 30px;
+		width: fit-content;
+		padding: 0 15px;
+	}
+}
