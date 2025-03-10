@@ -95,7 +95,7 @@ function InnerBanner({
 			scrollTrigger: {
 				trigger: triggerRef.current,
 				start: "top top",
-				end: "bottom bottom",
+				end: "=+1000",
 				scrub: 2, // Slower scrub for smoother scroll-based animation
 				pin: true,
 				markers: true,

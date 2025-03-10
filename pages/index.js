@@ -22,6 +22,8 @@ import ScrollTrigger from "gsap/src/ScrollTrigger";
 import HomeReflection from "@/sections/HomeReflection";
 import { useState } from "react";
 import IntroScreen from "@/components/IntroScreen";
+import HomeKeyExpertise from "@/sections/HomeKeyExpertise";
+import HomeCaseStudies from "@/sections/HomeCaseStudies";
 // DATA //
 
 /** Home Page */
@@ -52,6 +54,8 @@ export default function HomePage() {
 				/>
 				<HomeAbout gsap={gsap} ScrollTrigger={ScrollTrigger} />
 				<HomeReflection gsap={gsap} ScrollTrigger={ScrollTrigger} />
+				<HomeKeyExpertise gsap={gsap} ScrollTrigger={ScrollTrigger} />
+				<HomeCaseStudies gsap={gsap} ScrollTrigger={ScrollTrigger} />
 			</main>
 
 			{/* Page Content ends here */}
