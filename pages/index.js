@@ -39,7 +39,7 @@ export default function HomePage() {
 
 			{/* Page Content starts here */}
 			<main className={`${styles.HomePage} `}>
-				{showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
+				{/* {showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
 				<InnerBanner
 					gsap={gsap}
 					ScrollTrigger={ScrollTrigger}
@@ -54,7 +54,7 @@ export default function HomePage() {
 				/>
 				<HomeAbout gsap={gsap} ScrollTrigger={ScrollTrigger} />
 				<HomeReflection gsap={gsap} ScrollTrigger={ScrollTrigger} />
-				<HomeKeyExpertise gsap={gsap} ScrollTrigger={ScrollTrigger} />
+				<HomeKeyExpertise gsap={gsap} ScrollTrigger={ScrollTrigger} /> */}
 				<HomeCaseStudies gsap={gsap} ScrollTrigger={ScrollTrigger} />
 			</main>
 

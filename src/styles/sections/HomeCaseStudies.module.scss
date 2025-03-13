@@ -15,6 +15,9 @@
 			width: 10px;
 			border-radius: 50px;
 			background-color: var(--color_primary);
+
+			&::after {
+			}
 		}
 
 		.Line1BTN,
@@ -33,35 +36,34 @@
 			align-items: center;
 			justify-content: center;
 			opacity: 0;
+		}
+		.Line1BTN,
+		.Line2BTN,
+		.Line3BTN,
+		.Line4BTN {
+			rotate: 0deg;
+			position: relative;
 			&::before {
-				content: "";
+				content: "+";
 				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-
-				z-index: 1; // Ensures it appears above the background but below content
-				pointer-events: none; // Prevents interaction with the pseudo-element
+				left: 50%;
+				bottom: -10px;
+				transform: translateX(-50%);
+				font-size: 36px;
+				color: white;
+				font-weight: bold;
+				z-index: 99;
+				background: var(--color_secondary);
+				padding: 10px;
+				border-radius: 50px;
+				width: 10%;
+				height: 10%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 			}
 		}
-		.Line1BTN {
-			left: 30%;
-			transform: translate(-100px, -431px);
-		}
-		.Line2BTN {
-			left: 40%;
 
-			transform: translate(-50px, -530px);
-		}
-		.Line3BTN {
-			left: 30%;
-			transform: translate(278px, -531px);
-		}
-		.Line4BTN {
-			left: 30%;
-			transform: translate(441px, -421px);
-		}
 		.LineOne {
 			left: 30%;
 			rotate: -67deg;

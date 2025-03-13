@@ -36,7 +36,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			scrollTrigger: {
 				trigger: triggerRef.current,
 				start: "top top",
-				end: "+=1200",
+				end: "+=1500",
 				scrub: 2,
 				pin: true,
 				pinSpacer: false,
@@ -49,6 +49,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			.to(LineOneRef.current, {
 				x: -100,
 				y: -100,
+				rotation: 0,
 				width: "100px",
 				height: "100px",
 				opacity: 1,
@@ -57,6 +58,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			.to(LineTwoRef.current, {
 				x: -50,
 				y: -200,
+				rotation: 0,
 				width: "100px",
 				height: "100px",
 				opacity: 1,
@@ -65,6 +67,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			.to(LineThreeRef.current, {
 				x: 50,
 				y: -200,
+				rotation: 0,
 				width: "100px",
 				height: "100px",
 				opacity: 1,
@@ -73,6 +76,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			.to(LineFourRef.current, {
 				x: 100,
 				y: -90,
+				rotation: 0,
 				width: "100px",
 				height: "100px",
 
@@ -113,30 +117,37 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 				<div className={styles.wrapper}>
 					<img className={styles.SVG} src="/img/Home/LinesSvg.svg" loading="lazy" />
 					<div>
-						<div className={styles.LineOne} ref={LineOneRef}></div>
-						<div className={styles.Line1BTN} ref={LineOneBTNRef}>
-							<img src="/img/Home/sun.svg" loading="lazy" />
+						<div className={styles.LineOne} ref={LineOneRef}>
+							<div className={styles.Line1BTN} ref={LineOneBTNRef}>
+								<img src="/img/Home/sun.svg" loading="lazy" />
+							</div>
 						</div>
 					</div>
 
 					<div>
-						<div className={styles.LineTwo} ref={LineTwoRef}></div>
-						<div className={styles.Line2BTN} ref={LineTwoBTNRef}>
-							<img src="/img/Home/nav.svg" loading="lazy" />
+						<div className={styles.LineTwo} ref={LineTwoRef}>
+							<div className={styles.Line2BTN} ref={LineTwoBTNRef}>
+								<img src="/img/Home/nav.svg" loading="lazy" />
+							</div>
 						</div>
 					</div>
+
 					<div>
-						<div className={styles.LineThree} ref={LineThreeRef}></div>
-						<div className={styles.Line3BTN} ref={LineThreeBTNRef}>
-							<img src="/img/Home/chair.svg" loading="lazy" />
+						<div className={styles.LineThree} ref={LineThreeRef}>
+							<div className={styles.Line3BTN} ref={LineThreeBTNRef}>
+								<img src="/img/Home/chair.svg" loading="lazy" />
+							</div>
 						</div>
 					</div>
+
 					<div>
-						<div className={styles.LineFour} ref={LineFourRef}></div>
-						<div className={styles.Line4BTN} ref={LineFourBTNRef}>
-							<img src="/img/Home/people.svg" loading="lazy" />
+						<div className={styles.LineFour} ref={LineFourRef}>
+							<div className={styles.Line4BTN} ref={LineFourBTNRef}>
+								<img src="/img/Home/people.svg" loading="lazy" />
+							</div>
 						</div>
 					</div>
+
 					<div className={styles.ButtonDiv}></div>
 					<div className={styles.AbsoluteDiv}>
 						<div className={styles.RelativeDiv}>
