@@ -28,6 +28,8 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 	const LineTwoBTNRef = useRef(null);
 	const LineThreeBTNRef = useRef(null);
 	const LineFourBTNRef = useRef(null);
+	const LineSVGRef = useRef(null);
+	const TextRef = useRef(null);
 
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
@@ -44,12 +46,34 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			},
 		});
 
-		// Animate lines to width 100px and height 10px
+		gsap.set(LineSVGRef.current, {
+			// opacity: 0,
+			position: "absolute",
+			left: "50%",
+			bottom: "50%",
+			xPercent: -50,
+			yPercent: 61,
+		});
+
+		tl
+			.to(LineSVGRef.current, {
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				ease: "power2.out",
+			})
+
+			.to(LineSVGRef.current, {
+				opacity: 0,
+				y: 100,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+
 		tl
 			.to(LineOneRef.current, {
-				x: -100,
+				x: -200,
 				y: -100,
-				rotation: 0,
 				width: "100px",
 				height: "100px",
 				opacity: 1,
@@ -57,8 +81,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			})
 			.to(LineTwoRef.current, {
 				x: -50,
-				y: -200,
-				rotation: 0,
+				y: -300,
 				width: "100px",
 				height: "100px",
 				opacity: 1,
@@ -66,31 +89,38 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 			})
 			.to(LineThreeRef.current, {
 				x: 50,
-				y: -200,
-				rotation: 0,
+				y: -300,
 				width: "100px",
 				height: "100px",
 				opacity: 1,
 				ease: "power2.out",
 			})
 			.to(LineFourRef.current, {
-				x: 100,
-				y: -90,
-				rotation: 0,
+				x: 200,
+				y: -100,
 				width: "100px",
 				height: "100px",
-
 				opacity: 1,
 				ease: "power2.out",
 			})
-
+			.fromTo(
+				TextRef.current,
+				{ opacity: 0, y: 100 },
+				{
+					opacity: 1,
+					y: 0,
+					ease: "power3.out",
+					duration: 1,
+				}
+			)
 			.to(LineOneBTNRef.current, {
+				rotate: 0,
 				opacity: 1,
 				delay: 2,
 			})
-			.to(LineTwoBTNRef.current, { opacity: 1, delay: 1 })
-			.to(LineThreeBTNRef.current, { opacity: 1, delay: 1 })
-			.to(LineFourBTNRef.current, { opacity: 1, delay: 1 });
+			.to(LineTwoBTNRef.current, { opacity: 1, delay: 1, rotate: 0 })
+			.to(LineThreeBTNRef.current, { opacity: 1, delay: 1, rotate: 0 })
+			.to(LineFourBTNRef.current, { opacity: 1, delay: 1, rotate: 0 });
 
 		gsap.to(content3Ref.current, {
 			y: -200,
@@ -104,7 +134,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 		});
 
 		return () => {
-			tl.kill(); // Cleanup on unmount
+			tl.kill();
 		};
 	}, []);
 
@@ -115,7 +145,12 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 		>
 			<div className="container">
 				<div className={styles.wrapper}>
-					<img className={styles.SVG} src="/img/Home/LinesSVG.svg" loading="lazy" />
+					<img
+						ref={LineSVGRef}
+						className={styles.SVG}
+						src="/img/Home/LinesSVG.svg"
+						loading="lazy"
+					/>
 					<div>
 						<div className={styles.LineOne} ref={LineOneRef}>
 							<div className={styles.Line1BTN} ref={LineOneBTNRef}>
@@ -151,12 +186,16 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 					<div className={styles.ButtonDiv}></div>
 					<div className={styles.AbsoluteDiv}>
 						<div className={styles.RelativeDiv}>
-							<h1>Stories of real success</h1>
-							<p>
-								{
-									"Explore the stories of those who've navigated similar journeys before you, offering insights and inspiration for your own path."
-								}
-							</p>
+							<div ref={TextRef}>
+								<h1 className="color_primary text_300 text_2xl">
+									Stories of real success
+								</h1>
+								<p className="text_reg color_text text_300">
+									{
+										"Explore the stories of those who've navigated similar journeys before you, offering insights and inspiration for your own path."
+									}
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
