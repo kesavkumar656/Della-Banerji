@@ -115,7 +115,7 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 		>
 			<div className="container">
 				<div className={styles.wrapper}>
-					<img className={styles.SVG} src="/img/Home/LinesSvg.svg" loading="lazy" />
+					<img className={styles.SVG} src="/img/Home/LinesSVG.svg" loading="lazy" />
 					<div>
 						<div className={styles.LineOne} ref={LineOneRef}>
 							<div className={styles.Line1BTN} ref={LineOneBTNRef}>
