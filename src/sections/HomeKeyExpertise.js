@@ -62,7 +62,7 @@ export default function HomeKeyExpertise({ gsap, ScrollTrigger }) {
 				<div className={styles.wrapper}>
 					{" "}
 					<div className={styles.ImgDiv}>
-						<img src="/img/Home/img1.png" loading="lazy" />
+						<img src="/img/Home/Img1.png" loading="lazy" />
 					</div>
 					<div ref={ContentDivRef} className={styles.ContentWrapper}>
 						<div className={`${styles.section_tag} color_primary`}>Key Expertise</div>
