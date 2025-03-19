@@ -33,6 +33,25 @@ export default function HomeCaseStudies({ gsap, ScrollTrigger }) {
 
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
+		gsap.to(
+			[
+				LineOneRef.current,
+				LineTwoRef.current,
+				LineThreeRef.current,
+				LineFourRef.current,
+			],
+			{
+				delay: 5,
+				rotate: 0, // Reset rotation
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: triggerRef.current,
+					start: "top top",
+					end: "+=1500",
+					scrub: true,
+				},
+			}
+		);
 
 		const tl = gsap.timeline({
 			scrollTrigger: {
