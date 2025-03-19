@@ -59,7 +59,7 @@ export default function HomePage() {
 				<HomeKeyExpertise gsap={gsap} ScrollTrigger={ScrollTrigger} /> */}
 				<HomeCaseStudies gsap={gsap} ScrollTrigger={ScrollTrigger} />
 				<HomePractice gsap={gsap} ScrollTrigger={ScrollTrigger} />
-				<HomePractice1 gsap={gsap} ScrollTrigger={ScrollTrigger}></HomePractice1>
+				{/* <HomePractice1 gsap={gsap} ScrollTrigger={ScrollTrigger}></HomePractice1> */}
 			</main>
 
 			{/* Page Content ends here */}
