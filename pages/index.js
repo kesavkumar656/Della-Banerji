@@ -4,7 +4,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MetaTags from "@/components/MetaTags";
-import InnerBanner from "@/components/InnerBanner";
+// import InnerBanner from "@/components/InnerBanner";
 // SECTIONS //
 
 // PLUGINS //
@@ -15,14 +15,14 @@ import InnerBanner from "@/components/InnerBanner";
 import styles from "@/styles/pages/Home.module.scss";
 
 // IMAGES //
-import DesktopBanner from "@/../public/img/Home/DesktopBanner.jpg";
-import HomeAbout from "@/sections/HomeAbout";
+// import DesktopBanner from "@/../public/img/Home/DesktopBanner.jpg";
+// import HomeAbout from "@/sections/HomeAbout";
 import gsap from "gsap-trial/dist/gsap";
 import ScrollTrigger from "gsap-trial/dist/ScrollTrigger";
-import HomeReflection from "@/sections/HomeReflection";
-import { useState } from "react";
-import IntroScreen from "@/components/IntroScreen";
-import HomeKeyExpertise from "@/sections/HomeKeyExpertise";
+// import HomeReflection from "@/sections/HomeReflection";
+// import { useState } from "react";
+// import IntroScreen from "@/components/IntroScreen";
+// import HomeKeyExpertise from "@/sections/HomeKeyExpertise";
 import HomeCaseStudies from "@/sections/HomeCaseStudies";
 import HomePractice from "@/sections/HomePractice";
 import HomePractice1 from "@/sections/HomePractice1";
@@ -30,7 +30,7 @@ import HomePractice1 from "@/sections/HomePractice1";
 
 /** Home Page */
 export default function HomePage() {
-	const [showIntro, setShowIntro] = useState(true);
+	// const [showIntro, setShowIntro] = useState(true);
 	return (
 		<div>
 			{/* Metatags */}

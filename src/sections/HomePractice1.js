@@ -1,19 +1,26 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { DrawSVGPlugin } from "gsap-trial/dist/DrawSVGPlugin.js";
+// import { DrawSVGPlugin } from "gsap-trial/dist/DrawSVGPlugin.js";
 
 // eslint-disable-next-line require-jsdoc
 const HomePractice1 = () => {
 	const svgRef = useRef(null);
 
 	useEffect(() => {
-		gsap.registerPlugin(DrawSVGPlugin);
+		// gsap.registerPlugin(DrawSVGPlugin);
 
 		gsap.fromTo(
 			"path",
+
 			{ drawSVG: "0%" }, // Start with no stroke
-			{ drawSVG: "100%", stagger: 2, duration: 2, ease: "power1.inOut" } // Animate to full stroke
+			{
+				drawSVG: "100%",
+				stagger: 1,
+				duration: 1,
+				repeat: -1,
+				ease: "power1.inOut",
+			} // Animate to full stroke
 		);
 	}, []);
 
