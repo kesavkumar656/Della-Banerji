@@ -12,8 +12,15 @@ const HomePractice1 = () => {
 
 		gsap.fromTo(
 			"path",
+
 			{ drawSVG: "0%" }, // Start with no stroke
-			{ drawSVG: "100%", stagger: 2, duration: 2, ease: "power1.inOut" } // Animate to full stroke
+			{
+				drawSVG: "100%",
+				stagger: 1,
+				duration: 1,
+				repeat: -1,
+				ease: "power1.inOut",
+			} // Animate to full stroke
 		);
 	}, []);
 
