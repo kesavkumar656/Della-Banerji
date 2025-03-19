@@ -24,6 +24,7 @@ import { useState } from "react";
 import IntroScreen from "@/components/IntroScreen";
 import HomeKeyExpertise from "@/sections/HomeKeyExpertise";
 import HomeCaseStudies from "@/sections/HomeCaseStudies";
+import HomePractice from "@/sections/HomePractice";
 // DATA //
 
 /** Home Page */
@@ -39,7 +40,7 @@ export default function HomePage() {
 
 			{/* Page Content starts here */}
 			<main className={`${styles.HomePage} `}>
-				{showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
+				{/* {showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />} */}
 				<InnerBanner
 					gsap={gsap}
 					ScrollTrigger={ScrollTrigger}
@@ -56,6 +57,7 @@ export default function HomePage() {
 				<HomeReflection gsap={gsap} ScrollTrigger={ScrollTrigger} />
 				<HomeKeyExpertise gsap={gsap} ScrollTrigger={ScrollTrigger} />
 				<HomeCaseStudies gsap={gsap} ScrollTrigger={ScrollTrigger} />
+				<HomePractice gsap={gsap} ScrollTrigger={ScrollTrigger} />
 			</main>
 
 			{/* Page Content ends here */}
