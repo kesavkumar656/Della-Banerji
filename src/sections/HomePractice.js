@@ -12,7 +12,7 @@ export default function HomePractice({ gsap, ScrollTrigger }) {
 		const path = drawRef.current;
 		if (!path) return;
 
-		const pathLength = path.getTotalLength(); // Get the full path length
+		const pathLength = path.getTotalLength();
 
 		// Set initial styles
 		gsap.set(path, {
@@ -24,10 +24,11 @@ export default function HomePractice({ gsap, ScrollTrigger }) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: triggerRef.current,
-				start: "top center",
-				end: "top 30%",
-				scrub: 2,
-				markers: false,
+				start: "top 80%",
+				end: "bottom 10%",
+				yoyo: true,
+				scrub: true,
+				markers: true,
 			},
 		});
 
